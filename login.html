@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login VIP - Apostas Desportivas</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login VIP</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Usuário" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+      <p id="errorMessage" style="color: red;"></p>
+    </form>
+  </div>
+
+  <script>
+    // Simulação de credenciais corretas
+    const validUsername = "vipuser";
+    const validPassword = "senha123";
+
+    // Evento ao enviar o formulário
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Pega os valores inseridos no formulário
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Verifica se as credenciais estão corretas
+      if (username === validUsername && password === validPassword) {
+        // Salva estado de login
+        localStorage.setItem('loggedIn', true);
+
+        // Redireciona para a página de apostas
+        window.location.href = 'apostas.html';
+      } else {
+        // Exibe mensagem de erro
+        document.getElementById('errorMessage').textContent = "Usuário ou senha incorretos!";
+      }
+    });
+  </script>
+</body>
+</html>
