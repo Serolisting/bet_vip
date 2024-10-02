@@ -20,20 +20,32 @@
   </div>
 
   <script>
-    // Simulação de credenciais corretas
-    const validUsername = "vipuser";
-    const validPassword = "senha123";
+    // Simulação de múltiplos usuários com nomes personalizados
+    const users = [
+      { username: "vasco", password: "super123" },
+      { username: "Assana", password: "top456" },
+      { username: "miguel", password: "senha789" },
+      { username: "catarina", password: "cat321" },
+      { username: "pedro", password: "pedro654" },
+      { username: "mariana", password: "mari987" }
+    ];
 
     // Evento ao enviar o formulário
     document.getElementById('loginForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Pega os valores inseridos no formulário
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+      // Pega os valores inseridos no formulário, removendo espaços em branco
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-      // Verifica se as credenciais estão corretas
-      if (username === validUsername && password === validPassword) {
+      // Log de depuração para verificar entradas
+      console.log("Usuário inserido:", username);
+      console.log("Senha inserida:", password);
+
+      // Verifica se as credenciais correspondem a algum usuário no array
+      const user = users.find(user => user.username === username && user.password === password);
+
+      if (user) {
         // Salva estado de login
         localStorage.setItem('loggedIn', true);
 
@@ -47,3 +59,4 @@
   </script>
 </body>
 </html>
+
